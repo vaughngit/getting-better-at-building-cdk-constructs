@@ -46,25 +46,25 @@
       "description": "Prepare assets",
       "steps": [
         {
-          "spawn": "bundle:calendar\\calendar-setup.lambda"
+          "spawn": "bundle:calendar/calendar-setup.lambda"
         }
       ]
     },
-    "bundle:calendar\\calendar-setup.lambda": {
-      "name": "bundle:calendar\\calendar-setup.lambda",
+    "bundle:calendar/calendar-setup.lambda": {
+      "name": "bundle:calendar/calendar-setup.lambda",
       "description": "Create a JavaScript bundle from src/calendar/calendar-setup.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/calendar/calendar-setup.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/calendar\\calendar-setup.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk"
+          "exec": "esbuild --bundle src/calendar/calendar-setup.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/calendar/calendar-setup.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk"
         }
       ]
     },
-    "bundle:calendar\\calendar-setup.lambda:watch": {
-      "name": "bundle:calendar\\calendar-setup.lambda:watch",
+    "bundle:calendar/calendar-setup.lambda:watch": {
+      "name": "bundle:calendar/calendar-setup.lambda:watch",
       "description": "Continuously update the JavaScript bundle from src/calendar/calendar-setup.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/calendar/calendar-setup.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/calendar\\calendar-setup.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk --watch"
+          "exec": "esbuild --bundle src/calendar/calendar-setup.lambda.ts --target=\"node14\" --platform=\"node\" --outfile=\"assets/calendar/calendar-setup.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:aws-sdk --watch"
         }
       ]
     },
