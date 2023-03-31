@@ -1,5 +1,3 @@
-import { Hello } from '../src';
-
-test('hello', () => {
-  expect(new Hello().sayHello()).toBe('hello, world!');
+test('No-op placeholder test', () => {
+  // No-op
 });

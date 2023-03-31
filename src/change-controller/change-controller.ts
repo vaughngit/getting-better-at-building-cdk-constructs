@@ -1,3 +1,4 @@
+import { ChangeControllerFunction } from '@cdklabs/cdk-codepipeline-extensions';
 import { ComparisonOperator, TreatMissingData } from 'aws-cdk-lib/aws-cloudwatch';
 import { IStage } from 'aws-cdk-lib/aws-codepipeline';
 import { Rule, RuleTargetInput, Schedule } from 'aws-cdk-lib/aws-events';
@@ -5,8 +6,7 @@ import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
 import { Effect, PolicyStatement } from 'aws-cdk-lib/aws-iam';
 import { Construct } from 'constructs';
 import { Calendar } from '../calendar/calendar';
-import { ChangeControllerFunction } from '@cdklabs/cdk-codepipeline-extensions';
-import { Construct } from 'constructs';
+
 
 /**
  * Properties used to create change controller.
@@ -85,14 +85,14 @@ export class ChangeController extends Construct {
     const alarmDescription = 'change-controller-error-alarm';
 
     fn.metricErrors({ statistic: 'sum' }).createAlarm(this, 'change-controller-alarm', {
-        alarmName: `ChangeController-${props.stage.pipeline.pipelineName}${props.stage.stageName}`,
-        evaluationPeriods: 1,
-        threshold: 1,
-        comparisonOperator: ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
-        treatMissingData: TreatMissingData.BREACHING,
-        alarmDescription,
+      alarmName: `ChangeController-${props.stage.pipeline.pipelineName}${props.stage.stageName}`,
+      evaluationPeriods: 1,
+      threshold: 1,
+      comparisonOperator: ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
+      treatMissingData: TreatMissingData.BREACHING,
+      alarmDescription,
     });
-    
+
 
     // Create a rule to run the lambda on a schedule defined by the user
     const searchTerms = props.searchTerms.concat(alarmDescription);
